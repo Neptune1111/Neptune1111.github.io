@@ -118,6 +118,7 @@ function draw() {
 	if (xBalle == 0 || xBalle == 400) {
 		yBalle = 200;
 		xBalle = 200;
+		RandomStart();
 	}
 
 	
@@ -203,7 +204,11 @@ function MiseAJourScore() {
 	
 }
 
-
+function RandomStart() {
+	const THETA = Math.random() * 120 - 60;
+	xBalleVitesse = Math.cos(THETA*Math.PI/180) * 2 * Math.SQRT2;
+	yBalleVitesse = Math.sin(THETA*Math.PI/180) * 2 * Math.SQRT2;
+}
 
 
 var limite = [400, 0];
@@ -218,9 +223,10 @@ var Haut = true;
 
 var yRectangle1 = 175; 
 var yRectangle2 = 175;
-var xBalleVitesse = 2.0;
-var yBalleVitesse = 2.0;
-
+var xBalleVitesse;
+var yBalleVitesse;
+RandomStart(); 
+var multiplicateurVitesseBalle = 1;
 
 
 const KEY_J = 74;
