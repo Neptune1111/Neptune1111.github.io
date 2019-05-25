@@ -7,7 +7,7 @@ function setup() {
 } 
 
 function draw() {
-	
+	g
 	// couleur du fond
 	background(0, 0, 0);
 	//couleur des lignes
