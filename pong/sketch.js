@@ -17,42 +17,13 @@ function draw() {
 	// couleur de la balle
 	fill (255, 255, 255);
 	
-	
-	if (Gauche == true)  {								// Faire déplacer la balle
-		xBalle = (xBalle - xBalleVitesse);	
+	xBalle = (xBalle + xBalleVitesse);
+	yBalle = (yBalle + yBalleVitesse);
 		
-	}
- 		else {
-		xBalle = (xBalle + xBalleVitesse);
-		
-	}
-	
-	if (xBalle >= 400) {
-		Gauche = true;
-
-	}
-	
-	if (xBalle <= 0) {
-		Gauche = false;
-	}
-	
-	if (Haut == true) {
-		yBalle = (yBalle - yBalleVitesse);
-		
-	}
-		else {
-		yBalle = (yBalle + yBalleVitesse);
-		
-	}	
-	
-	if (yBalle <= 0) {
-		Haut = false;
+	if (yBalle <= 0 || yBalle >= 400) {
+		yBalleVitesse = yBalleVitesse * -1;
 	}
 
-	if (yBalle >= 400) {
-		Haut = true;
-	}
-	
 	if (keyIsDown (KEY_Z)) {						// Déplacer la plateforme 1
 		yRectangle1 = (yRectangle1 - VITESSE_PLATEFORME) 
 		if (yRectangle1 < 0){
@@ -82,23 +53,13 @@ function draw() {
 		}
 	}
 	
-	if (CollisionPlateformeBalle1() == true && Gauche == true) {			// Faire rebondir la balle sur la plateforme 1
-		if (Gauche == true) {
-			Gauche = false ;
-		}
-		else {
-			Gauche = true;
-		}
-		
+	if (CollisionPlateformeBalle1() == true ) {			// Faire rebondir la balle sur la plateforme 1
+		xBalleVitesse = Math.abs(xBalleVitesse);
 	}
 	
-	if (CollisionPlateformeBalle2 () == true && Gauche == false) {			// Faire rebondir la balle sur la plateforme 2
-		if (Gauche == false) {
-			Gauche = true;
-		}
-		else {
-			Gauche = false; 
-		}
+	if (CollisionPlateformeBalle2 () == true) {			// Faire rebondir la balle sur la plateforme 2
+		xBalleVitesse = Math.abs(xBalleVitesse) * -1;
+		
 	}
 	
 
@@ -114,20 +75,14 @@ function draw() {
 		
 	}	
 	
-	MiseAJourScore();
-	if (xBalle == 0 || xBalle == 400) {
+	
+	if (xBalle < 0 || xBalle > 400) {
+		
+		MiseAJourScore(xBalle > 400);
 		yBalle = 200;
 		xBalle = 200;
 		RandomStart();
 	}
-
-	
-	
-	
-	
-	
-	
-	
 	
 	// Plateforme joueur 1
 	rect (50, yRectangle1, 10, 50) ;
@@ -151,13 +106,13 @@ function draw() {
     stroke (255, 255, 255); // couleur du contour
     strokeWeight(3); // épaisseur du contour
     noFill(); 
-    beginShape ();
+    beginShape();
     vertex (0, 0);
     vertex (400, 0);
     vertex (400, 400);
     vertex (0, 400);
     vertex (0, 0);
-    endShape ();
+    endShape();
     
 }
 
@@ -192,16 +147,15 @@ function CollisionPlateformeBalle2() {
 }
 
 
-function MiseAJourScore() {
-	for (k = 0; k < 2; k = k + 1) {
-		if (xBalle == limite[k]) {
-			pointsJoueur[k] = pointsJoueur[k] + 1;
-			conteneurPointsJoueur[k].innerText = pointsJoueur[k];
-			
-		}
-	
+function MiseAJourScore(JoueurGaucheMarque) {
+	var k;
+	if (JoueurGaucheMarque == true) {
+		k = 0;
+	}	else {
+		k = 1;
 	}
-	
+	pointsJoueur[k] = pointsJoueur[k] + 1;
+	conteneurPointsJoueur[k].innerText = pointsJoueur[k];
 }
 
 function RandomStart() {
@@ -218,16 +172,12 @@ var conteneurPointsJoueur = [document.getElementById("conteneurPointsJoueur1"), 
 var xBalle = 200.0;
 var yBalle = 200.0;
 
-var Gauche = true; 
-var Haut = true;
-
 var yRectangle1 = 175; 
 var yRectangle2 = 175;
 var xBalleVitesse;
 var yBalleVitesse;
 RandomStart(); 
 var multiplicateurVitesseBalle = 1;
-
 
 const KEY_J = 74;
 const KEY_N = 78;
