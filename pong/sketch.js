@@ -17,37 +17,39 @@ function draw() {
 	// couleur de la balle
 	fill (255, 255, 255);
 	
-	xBalle = (xBalle + xBalleVitesse);
-	yBalle = (yBalle + yBalleVitesse);
+	
+	xBalle = (xBalle + xBalleVitesse * multiplicateurVitesseBalle);
+	yBalle = (yBalle + yBalleVitesse * multiplicateurVitesseBalle);
 		
 	if (yBalle <= 0 || yBalle >= 400) {
 		yBalleVitesse = yBalleVitesse * -1;
 	}
 
 	if (keyIsDown (KEY_Z)) {						// Déplacer la plateforme 1
-		yRectangle1 = (yRectangle1 - VITESSE_PLATEFORME) 
+		yRectangle1 = (yRectangle1 - VITESSE_PLATEFORME * multiplicateurVitesseBalle) 
 		if (yRectangle1 < 0){
 			yRectangle1 =0;
+
 		}
 		  
 	}
 	
 	if (keyIsDown (KEY_S)) {						
-		yRectangle1 = (yRectangle1 + VITESSE_PLATEFORME) ;
+		yRectangle1 = (yRectangle1 + VITESSE_PLATEFORME * multiplicateurVitesseBalle) ;
 		if (yRectangle1 > 350) {
 			yRectangle1 = 350;
 		}
 	}
 	
 	if (keyIsDown (KEY_J)) {						// Déplacer la plateforme 2
-		yRectangle2 = (yRectangle2 - VITESSE_PLATEFORME) ;
+		yRectangle2 = (yRectangle2 - VITESSE_PLATEFORME * multiplicateurVitesseBalle) ;
 		if (yRectangle2 < 0){
 			yRectangle2 =0;
 		}
 	}	
 	
 	if (keyIsDown (KEY_N)) {
-		yRectangle2 = (yRectangle2 + VITESSE_PLATEFORME) ;
+		yRectangle2 = (yRectangle2 + VITESSE_PLATEFORME * multiplicateurVitesseBalle) ;
 		if (yRectangle2 > 350) {
 			yRectangle2 = 350;
 		}
@@ -61,9 +63,7 @@ function draw() {
 		xBalleVitesse = Math.abs(xBalleVitesse) * -1;
 		
 	}
-	
-
-	
+		
 	
 	if (keyIsDown (KEY_J) && keyIsDown (KEY_N) && CollisionPlateformeBalle2 == 1) {
 		xBalleVitesse = xBalleVitesse + 2;
@@ -124,7 +124,7 @@ function CollisionPlateformeBalle1() {
 	var yPlateforme1Min = yPlateforme1
 	var yPlateforme1Max = (yPlateforme1 + 60)
 	if (yBalle < yPlateforme1Max && yBalle > yPlateforme1Min && xBalle < 75 && xBalle > 70) {
-		
+		multiplicateurVitesseBalle = multiplicateurVitesseBalle * 1.1;
 		console.log ('Collision à gauche') 
 		return true;
 	}
@@ -141,6 +141,7 @@ function CollisionPlateformeBalle2() {
 	var yPlateforme2Max = (yPlateforme2 + 60)
 	if (yBalle < yPlateforme2Max && yBalle > yPlateforme2Min && xBalle > 345 && xBalle < 350) {
 		console.log ('Collision à droite')
+		multiplicateurVitesseBalle = multiplicateurVitesseBalle * 1.1;
 		return true;
 	}
 	return false;
@@ -162,7 +163,9 @@ function RandomStart() {
 	const THETA = Math.random() * 120 - 60;
 	xBalleVitesse = Math.cos(THETA*Math.PI/180) * 2 * Math.SQRT2;
 	yBalleVitesse = Math.sin(THETA*Math.PI/180) * 2 * Math.SQRT2;
+	multiplicateurVitesseBalle = 1;
 }
+
 
 
 var limite = [400, 0];
