@@ -17,7 +17,6 @@ function draw() {
 	// couleur de la balle
 	fill (255, 255, 255);
 	
-	
 	xBalle = (xBalle + xBalleVitesse * multiplicateurVitesseBalle);
 	yBalle = (yBalle + yBalleVitesse * multiplicateurVitesseBalle);
 		
