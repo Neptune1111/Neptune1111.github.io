@@ -1,32 +1,32 @@
 
+
 body {
     background-color: black;
     color: lawngreen;
     letter-spacing: 1px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
 }
-
  
 
 /* lien non visité */
 a:link {
     color: lawngreen;
     text-decoration: underline;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
 }
 
 /* lien visité */
 a:visited {
     color: lawngreen;
     text-decoration: dotted;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
 }
 
 /* souris sur lien */
 a:hover {
     color: white;
     text-decoration: underline;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
 }
 
 /* lien cliqué */
@@ -34,7 +34,7 @@ a:active {
     color: white;
     text-decoration: dotted;
     font-style: oblique;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
 }   
 
 
@@ -43,6 +43,7 @@ a:active {
 /* Titre */
 #titre {
     font-style: none;
+	font-size: 50px;
     text-decoration: none;
     font-family: 'Source Code Pro', monospace;
 }
@@ -78,7 +79,10 @@ a:active {
 
 /* Position du canevas */
 #sketch-holder {
-    position: absolute; left: 50%; width: 400px; margin-left: -200px;
+    position: absolute;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
 }
 
 
@@ -91,7 +95,8 @@ a:active {
     padding: 15px 25px;
     text-align: center;
     font-size: 20px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
+    font-weight: bold;
     cursor: pointer;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
@@ -106,7 +111,8 @@ a:active {
     padding: 13px 23px;
     text-align: center;
     font-size: 20px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
+    font-weight: bold;
     cursor: pointer;
     border-radius: 0px;
 }
@@ -118,7 +124,8 @@ a:active {
     padding: 13px 23px;
     text-align: center;
     font-size: 20px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'nova mono', monospace;
+    font-weight: bold;
     cursor: wait;
     border-radius: 0px;
 }
@@ -162,18 +169,47 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: goldenrod}
+.dropdown-content a:hover {
+    background-color: goldenrod
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 /*affichage scores*/
-#score_1 {
+#conteneurPointsJoueur1 {
     text-decoration: none;
-    color: black;
-    font-size: 20px;
+    color: rgb(200, 0, 0);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 150px;
+    font-weight: normal;
+    float: left;
 }
 
+#conteneurPointsJoueur2 {
+    text-decoration: none;
+    color: rgb(0, 0, 200);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 150px;
+    font-weight: normal;
+    float: right;
+}
 
-/*score*/
+#namepts1 {
+	text-decoration: none;
+    color: rgb(200, 0, 0);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 50px;
+    font-weight: normal;
+    float: left;
+}
+
+#namepts2 {
+	text-decoration: none;
+    color: rgb(0, 0, 200);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 50px;
+    font-weight: normal;
+    float: right;
+}
