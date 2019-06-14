@@ -165,6 +165,22 @@ function RandomStart() {
 	multiplicateurVitesseBalle = 1;
 }
 
+function GameStart() {
+    if (keyIsPressed === true) {
+        gameStart = true;
+        console.log('Game Start');
+    } else {
+        return false;
+    }
+}
+function GameEnd() {
+   if (pointsJoueur > 7) {
+        gameEnd = true;
+    } else {
+        return false;
+    }
+}
+
 
 
 var limite = [400, 0];
