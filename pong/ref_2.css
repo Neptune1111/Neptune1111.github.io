@@ -1,10 +1,9 @@
-
-
 body {
     background-color: black;
     color: lawngreen;
     letter-spacing: 1px;
     font-family: 'nova mono', monospace;
+    margin : 0
 }
  
 
